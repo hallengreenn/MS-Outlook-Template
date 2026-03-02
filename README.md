@@ -38,7 +38,7 @@ To deploy this add-in, you need:
 ### Deployment in 3 Steps
 
 1. **Deploy to Azure Static Web Apps**
-   - Follow the detailed guide: **AZURE-DEPLOYMENT.md** ⭐
+   - Follow the detailed guide: **docs/AZURE-DEPLOYMENT.md** ⭐
    - Upload all files from root directory to Azure
    - Or use GitHub Pages, Netlify, etc.
 
@@ -79,6 +79,9 @@ For local development and testing before deployment:
 ```
 outlook-meeting-template/
 │
+├── README.md                    # This file
+├── LICENSE                      # MIT License
+│
 ├── manifest.xml                 # Office Add-in manifest (uses localhost for dev)
 ├── index.html                   # Landing page for add-in
 ├── commands.html                # Commands page (event handler)
@@ -86,15 +89,21 @@ outlook-meeting-template/
 ├── taskpane.html                # Task pane UI
 ├── taskpane.js                  # Task pane logic
 ├── staticwebapp.config.json     # Azure Static Web App configuration
-├── server.js                    # Local development server
+├── server.js                    # Local development server (optional)
 ├── package.json                 # NPM dependencies
 │
-└── assets/                      # Icons (PNG format)
-    ├── icon-16.png
-    ├── icon-32.png
-    ├── icon-64.png
-    ├── icon-80.png
-    └── icon-128.png
+├── assets/                      # Icons (PNG format)
+│   ├── icon-16.png
+│   ├── icon-32.png
+│   ├── icon-64.png
+│   ├── icon-80.png
+│   └── icon-128.png
+│
+└── docs/                        # Documentation
+    ├── AZURE-DEPLOYMENT.md      # Azure deployment guide
+    ├── DEPLOYMENT-GUIDE.md      # General deployment guide
+    ├── CONFIGURATION.md         # Configuration options
+    └── TROUBLESHOOTING.md       # Troubleshooting guide
 ```
 
 ## Deployment
@@ -116,9 +125,9 @@ outlook-meeting-template/
 
 ### Deployment Guides
 
-- **AZURE-DEPLOYMENT.md** - Azure Static Web Apps deployment (recommended) ⭐
-- **DEPLOYMENT-GUIDE.md** - General deployment guide for any HTTPS server
-- **CONFIGURATION.md** - Detailed configuration options
+- **docs/AZURE-DEPLOYMENT.md** - Azure Static Web Apps deployment (recommended) ⭐
+- **docs/DEPLOYMENT-GUIDE.md** - General deployment guide for any HTTPS server
+- **docs/CONFIGURATION.md** - Detailed configuration options
 
 ## Customize the Template
 
@@ -192,7 +201,7 @@ The add-in uses the following Office.js APIs:
 2. Check Console for JavaScript errors
 3. Verify LaunchEvent is registered correctly
 
-See **TROUBLESHOOTING.md** for comprehensive troubleshooting guide.
+See **docs/TROUBLESHOOTING.md** for comprehensive troubleshooting guide.
 
 ## Security
 
@@ -223,9 +232,9 @@ MIT License - See LICENSE file for details
 ## Support
 
 For questions or issues:
-1. Check **TROUBLESHOOTING.md** for common problems and solutions
-2. Review deployment guides (AZURE-DEPLOYMENT.md, DEPLOYMENT-GUIDE.md)
-3. Check configuration options in CONFIGURATION.md
+1. Check **docs/TROUBLESHOOTING.md** for common problems and solutions
+2. Review deployment guides (AZURE-DEPLOYMENT.md, docs/DEPLOYMENT-GUIDE.md)
+3. Check configuration options in docs/CONFIGURATION.md
 4. Create an issue in the GitHub repository
 
 ## Credits
