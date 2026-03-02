@@ -113,8 +113,9 @@ outlook-meeting-template/
 
 ### Deployment Guides
 
-- **docs/DEPLOYMENT.md** - Complete deployment guide
-- **docs/AZURE-DEPLOYMENT.md** - Azure Static Web Apps specific guide
+- **AZURE-DEPLOYMENT.md** - Azure Static Web Apps deployment (recommended) ⭐
+- **DEPLOYMENT-GUIDE.md** - General deployment guide for any HTTPS server
+- **CONFIGURATION.md** - Detailed configuration options
 - **docs/INTUNE-POLICY-QUICK.md** - Deploy via Intune to all users
 
 ## Customize the Template

@@ -4,14 +4,3 @@ node_modules/
 npm-debug.log*
 .env
 .vscode/
-.claude/
-deploy/
-package.json
-package-lock.json
-server.js
-AZURE-DEPLOYMENT.md
-DEPLOYMENT.md
-FILER-TIL-AZURE.txt
-HURTIG-AZURE-GUIDE.md
-MANUAL-UPLOAD-GUIDE.md
-QUICKSTART.md
