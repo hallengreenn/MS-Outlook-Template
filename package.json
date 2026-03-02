@@ -1,0 +1,21 @@
+{
+  "name": "custom-meeting-template",
+  "version": "1.0.0",
+  "description": "Outlook Add-in til automatisk møde skabelon",
+  "main": "index.js",
+  "scripts": {
+    "start": "office-addin-debugging start manifest.xml desktop",
+    "stop": "office-addin-debugging stop manifest.xml",
+    "validate": "office-addin-manifest validate manifest.xml"
+  },
+  "keywords": ["outlook", "add-in", "meeting", "template"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "office-addin-debugging": "^5.0.0",
+    "office-addin-manifest": "^1.12.0"
+  }
+}

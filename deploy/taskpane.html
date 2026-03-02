@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Møde Skabelon</title>
+
+    <!-- Office UI Fabric for styling -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+
+    <!-- Office.js library -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #0078d4;
+            color: white;
+            padding: 15px;
+            margin: -20px -20px 20px -20px;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .template-preview {
+            background-color: #f3f2f1;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #0078d4;
+            margin-bottom: 20px;
+        }
+
+        .template-preview h3 {
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #323130;
+            font-size: 14px;
+        }
+
+        .template-preview p {
+            margin: 5px 0;
+            color: #605e5c;
+            font-size: 13px;
+        }
+
+        button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #106ebe;
+        }
+
+        .info {
+            background-color: #f3f9fd;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 4px solid #0078d4;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>📋 Møde Skabelon</h2>
+    </div>
+
+    <div class="template-preview">
+        <h3>Formål med mødet</h3>
+        <p>Kort beskrivelse af, hvorfor vi mødes, og hvad vi skal opnå.</p>
+
+        <h3>Dagsorden/emner</h3>
+        <p>Liste over de punkter, der skal drøftes (fx status eller beslutninger)</p>
+
+        <h3>Roller og ansvar</h3>
+        <p>Hvem er mødeleder og hvem tager referat (hvis relevant).</p>
+
+        <h3>Beslutninger og næste skridt</h3>
+        <p>Afslut med at opsummere beslutninger og aftale opfølgning.</p>
+
+        <h3>Evt.</h3>
+        <p>Tid til spørgsmål eller andre punkter.</p>
+    </div>
+
+    <button onclick="insertTemplate()">Indsæt Skabelon</button>
+
+    <div class="info">
+        <strong>ℹ️ Automatisk indsættelse</strong><br>
+        Skabelonen indsættes automatisk når du opretter en ny mødeaftale.
+        Du kan også bruge denne knap til at indsætte den manuelt.
+    </div>
+
+    <script src="taskpane.js"></script>
+</body>
+</html>

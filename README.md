@@ -25,11 +25,37 @@ This open-source project makes it easy to standardize meeting documentation in y
 
 ### Prerequisites
 
-- Node.js installed (https://nodejs.org)
-- Outlook Desktop (Microsoft 365 or Office 2016+)
-- Code editor (VS Code recommended)
+To deploy this add-in, you need:
 
-### Local Development in 3 Steps
+- **HTTPS web hosting** - Required for Office Add-ins
+  - Azure Static Web Apps (recommended - free tier available)
+  - GitHub Pages
+  - Netlify, Vercel, or any HTTPS server
+- **Microsoft 365 Admin Center access** - For deploying to users
+- **Outlook** (Desktop, Web, or Mac) - For testing
+- **Code editor** (VS Code recommended) - For customization
+
+### Deployment in 3 Steps
+
+1. **Deploy to Azure Static Web Apps**
+   - Follow the detailed guide: **AZURE-DEPLOYMENT.md** ⭐
+   - Or use GitHub Pages, Netlify, etc.
+
+2. **Update manifest.xml**
+   - Replace `https://YOUR-DOMAIN.com` with your actual hosting URL
+   - Update `<ProviderName>` with your organization name
+
+3. **Deploy to users**
+   - Go to Microsoft 365 Admin Center
+   - Navigate to **Settings → Integrated apps**
+   - Upload your manifest.xml
+   - Assign to users or groups
+
+**See AZURE-DEPLOYMENT.md for detailed step-by-step instructions.**
+
+### Local Testing (Optional)
+
+For local development and testing before deployment:
 
 1. **Install dependencies**
    ```bash
@@ -40,21 +66,12 @@ This open-source project makes it easy to standardize meeting documentation in y
    ```bash
    node server.js
    ```
-   Server will run on http://localhost:3000
 
-3. **Add add-in to Outlook**
-   - Open Outlook Desktop
-   - Go to **File** → **Get Add-ins** → **My Add-ins**
-   - Select **Add a custom add-in** → **Add from file...**
-   - Select `manifest.xml` from this project
-   - Click **Install**
+3. **Test in Outlook**
+   - Use the localhost URLs in manifest.xml
+   - Add to Outlook for testing: File → Get Add-ins → My Add-ins → Add from file
 
-4. **Test it!**
-   - Go to Calendar in Outlook
-   - Click **New Meeting**
-   - Template is inserted automatically
-
-**See `docs/QUICKSTART.md` for detailed guide.**
+**Note:** Local testing is optional. You can deploy directly to Azure and test there.
 
 ## Project Structure
 
@@ -109,14 +126,13 @@ outlook-meeting-template/
 
 3. **Deploy to users**
    - Via Microsoft 365 Admin Center: **Settings → Integrated apps → Upload custom app**
-   - Via Intune: See `docs/INTUNE-POLICY-QUICK.md`
+   - Assign to specific users, groups, or entire organization
 
 ### Deployment Guides
 
 - **AZURE-DEPLOYMENT.md** - Azure Static Web Apps deployment (recommended) ⭐
 - **DEPLOYMENT-GUIDE.md** - General deployment guide for any HTTPS server
 - **CONFIGURATION.md** - Detailed configuration options
-- **docs/INTUNE-POLICY-QUICK.md** - Deploy via Intune to all users
 
 ## Customize the Template
 
@@ -190,7 +206,7 @@ The add-in uses the following Office.js APIs:
 2. Check Console for JavaScript errors
 3. Verify LaunchEvent is registered correctly
 
-See `docs/FIX-GUIDE.md` for more troubleshooting tips.
+See **TROUBLESHOOTING.md** for comprehensive troubleshooting guide.
 
 ## Security
 
@@ -221,9 +237,10 @@ MIT License - See LICENSE file for details
 ## Support
 
 For questions or issues:
-1. Check documentation in `/docs` folder
-2. See troubleshooting guide: `docs/FIX-GUIDE.md`
-3. Create an issue in the GitHub repository
+1. Check **TROUBLESHOOTING.md** for common problems and solutions
+2. Review deployment guides (AZURE-DEPLOYMENT.md, DEPLOYMENT-GUIDE.md)
+3. Check configuration options in CONFIGURATION.md
+4. Create an issue in the GitHub repository
 
 ## Credits
 

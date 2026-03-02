@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Møde Skabelon Add-in</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .status {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        code {
+            background: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Møde Skabelon Add-in</h1>
+        <p>Outlook Add-in til automatisk indsættelse af møde skabeloner</p>
+
+        <div class="status">
+            ✅ Add-in er online og klar
+        </div>
+
+        <div class="info">
+            <h3>📌 Information</h3>
+            <p>Dette er hosting serveren for Møde Skabelon add-in til Microsoft Outlook.</p>
+
+            <h4>Filer tilgængelige:</h4>
+            <ul>
+                <li><code>manifest.xml</code> - Add-in manifest</li>
+                <li><code>commands.html</code> - Command handler</li>
+                <li><code>commands.js</code> - Auto-insert logik</li>
+                <li><code>taskpane.html</code> - UI panel</li>
+                <li><code>taskpane.js</code> - UI logik</li>
+            </ul>
+
+            <h4>🚀 Deployment:</h4>
+            <p>Deploy via Microsoft 365 Admin Center ved at uploade <code>manifest.xml</code> fra denne server.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "routes": [
+    {
+      "route": "/*",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type"
+      }
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/assets/*", "/*.html", "/*.js", "/*.xml"]
+  },
+  "mimeTypes": {
+    ".json": "application/json",
+    ".xml": "application/xml"
+  },
+  "globalHeaders": {
+    "cache-control": "public, max-age=3600"
+  }
+}
