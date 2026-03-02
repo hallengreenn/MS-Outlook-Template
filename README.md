@@ -1,350 +1,238 @@
 # Outlook Meeting Template Add-in
 
-Et professionelt Outlook add-in der automatisk indsætter møde-skabeloner når du opretter nye kalenderbegivenheder.
+A professional Outlook add-in that automatically inserts structured meeting templates when creating new calendar appointments.
 
-## Indholdsfortegnelse
+## Description
 
-- [Om projektet](#om-projektet)
-- [Funktioner](#funktioner)
-- [To løsninger](#to-løsninger)
-- [Kom hurtigt i gang](#kom-hurtigt-i-gang)
-- [Projekt struktur](#projekt-struktur)
-- [Dokumentation](#dokumentation)
-- [Deployment](#deployment)
+This open-source project makes it easy to standardize meeting documentation in your organization by automatically inserting a structured template into all new meeting appointments in Outlook.
 
-## Om projektet
+**Default template includes:**
+- Meeting purpose/objective
+- Agenda items
+- Roles and responsibilities
+- Decisions and next steps
+- Other business
 
-Dette projekt gør det nemt at standardisere møde-dokumentation i din organisation ved automatisk at indsætte en struktureret skabelon i alle nye mødeaftaler i Outlook.
+## Features
 
-**Standard skabelon indeholder:**
-- Formål med mødet
-- Dagsorden/emner
-- Roller og ansvar
-- Beslutninger og næste skridt
-- Evt.
+- **Automatic activation** - Template is inserted automatically when creating a new meeting
+- **Event-based** - Uses Office.js LaunchEvent API for fast response
+- **Full HTML support** - Template supports formatting, lists, tables, etc.
+- **Cross-platform** - Works in Outlook Desktop, Web, and Mac (when deployed to HTTPS)
+- **Enterprise-ready** - Can be deployed centrally via Microsoft 365 Admin Center or Intune
 
-## Funktioner
+## Quick Start
 
-- **Automatisk aktivering** - Skabelonen indsættes automatisk når du opretter en ny mødeaftale
-- **Event-baseret** - Bruger Office.js LaunchEvent API for hurtig respons
-- **Fuld HTML support** - Skabelonen understøtter formatering, lister, tabeller osv.
-- **Cross-platform** - Virker i Outlook Desktop, Web og Mac (når deployed til HTTPS)
-- **Enterprise-klar** - Kan deployes centraliseret via Microsoft 365 Admin Center eller Intune
+### Prerequisites
 
-## To løsninger
+- Node.js installed (https://nodejs.org)
+- Outlook Desktop (Microsoft 365 or Office 2016+)
+- Code editor (VS Code recommended)
 
-Dette repository indeholder to forskellige implementeringer:
+### Local Development in 3 Steps
 
-### 1. Web Add-in (Anbefalet) ✅
-
-**Placering:** Rod-mappen + `/deploy`
-**Teknologi:** Office.js (HTML/JavaScript)
-
-**Fordele:**
-- Cross-platform (Windows, Mac, Web, Mobile)
-- Automatiske opdateringer
-- Centraliseret deployment
-- Nemmere at vedligeholde
-
-**Brug denne løsning hvis:**
-- Du vil have cross-platform support
-- Du vil deploye til mange brugere
-- Du vil have automatiske opdateringer
-
-### 2. VSTO COM Add-in (Legacy)
-
-**Placering:** `/OutlookVSTO`
-**Teknologi:** C# VSTO/COM
-
-**Fordele:**
-- Dybere Windows integration
-- Mere kontrol over Outlook funktioner
-- Virker offline
-
-**Brug denne løsning hvis:**
-- Du kun har Windows Desktop Outlook
-- Du har specifikke COM integration behov
-- Du har legacy requirements
-
-**Se `/OutlookVSTO/README.md` for VSTO dokumentation.**
-
-## Kom hurtigt i gang
-
-### Forudsætninger
-
-- Node.js installeret (https://nodejs.org)
-- Outlook Desktop (Microsoft 365 eller Office 2016+)
-- Code editor (VS Code anbefales)
-
-### Lokal test i 3 trin
-
-1. **Installer dependencies**
+1. **Install dependencies**
    ```bash
    npm install
    ```
 
-2. **Start lokal server**
+2. **Start local server**
    ```bash
    node server.js
    ```
-   Serveren kører nu på http://localhost:3000
+   Server will run on http://localhost:3000
 
-3. **Tilføj add-in til Outlook**
-   - Åbn Outlook Desktop
-   - Gå til **File** → **Get Add-ins** → **My Add-ins**
-   - Vælg **Add a custom add-in** → **Add from file...**
-   - Vælg `manifest.xml` fra dette projekt
-   - Klik **Install**
+3. **Add add-in to Outlook**
+   - Open Outlook Desktop
+   - Go to **File** → **Get Add-ins** → **My Add-ins**
+   - Select **Add a custom add-in** → **Add from file...**
+   - Select `manifest.xml` from this project
+   - Click **Install**
 
-4. **Test det!**
-   - Gå til Calendar i Outlook
-   - Klik **New Meeting**
-   - Skabelonen indsættes automatisk
+4. **Test it!**
+   - Go to Calendar in Outlook
+   - Click **New Meeting**
+   - Template is inserted automatically
 
-**Se `docs/QUICKSTART.md` for detaljeret guide.**
+**See `docs/QUICKSTART.md` for detailed guide.**
 
-## Projekt struktur
+## Project Structure
 
 ```
-customeeting/
+outlook-meeting-template/
 │
-├── manifest.xml                 # Office Add-in manifest (aktiv)
+├── manifest.xml                 # Office Add-in manifest (uses localhost for dev)
 ├── index.html                   # Landing page for add-in
 ├── commands.html                # Commands page (event handler)
 ├── commands.js                  # Event-based activation logic
 ├── taskpane.html                # Task pane UI
 ├── taskpane.js                  # Task pane logic
-├── staticwebapp.config.json     # Azure Static Web App konfiguration
-├── server.js                    # Lokal development server
+├── staticwebapp.config.json     # Azure Static Web App configuration
+├── server.js                    # Local development server
 ├── package.json                 # NPM dependencies
 │
-├── assets/                      # Ikoner (PNG format)
+├── assets/                      # Icons (PNG format)
 │   ├── icon-16.png
 │   ├── icon-32.png
 │   ├── icon-64.png
 │   ├── icon-80.png
 │   └── icon-128.png
 │
-├── deploy/                      # Klar til Azure deployment
-│   ├── manifest.xml             # Manifest med Azure URLs
+├── deploy/                      # Ready for production deployment
+│   ├── manifest.xml             # Manifest with YOUR-DOMAIN.com placeholders
 │   ├── index.html
 │   ├── commands.html
 │   ├── commands.js
 │   ├── taskpane.html
 │   ├── taskpane.js
 │   ├── staticwebapp.config.json
-│   └── assets/                  # Ikoner
+│   └── assets/                  # Icons
 │
-├── docs/                        # Dokumentation
+├── docs/                        # Documentation
 │   ├── QUICKSTART.md            # Quick start guide
-│   ├── DEPLOYMENT.md            # Fuld deployment guide
-│   ├── AZURE-DEPLOYMENT.md      # Azure specifik guide
-│   ├── HURTIG-AZURE-GUIDE.md    # Hurtig Azure guide
-│   ├── MANUAL-UPLOAD-GUIDE.md   # Manuel Azure upload
-│   ├── BRUGER-GUIDE.md          # Guide til slutbrugere
-│   ├── PINNING-GUIDE.md         # Guide til at pinne add-in
-│   ├── INTUNE-POLICY-QUICK.md   # Intune deployment guide
-│   ├── FIX-GUIDE.md             # Fejlfinding
-│   └── FILER-TIL-AZURE.txt      # Liste over Azure filer
+│   ├── DEPLOYMENT.md            # Full deployment guide
+│   └── ...
 │
-├── archive/                     # Gamle/test filer (ignorer)
-│   ├── manifest-*.xml           # Test manifest versioner
-│   ├── commands-FIXED.js
-│   ├── create-icons.html
-│   └── icon-base64.txt
-│
-├── OutlookVSTO/                 # VSTO COM Add-in (alternativ løsning)
-│   ├── OutlookMeetingAddin.sln
-│   ├── OutlookMeetingAddin.csproj
-│   ├── ThisAddIn.cs
-│   ├── MeetingTaskPane.cs
-│   └── README.md                # VSTO dokumentation
-│
-└── .github/                     # GitHub Actions workflows
-    └── workflows/
+└── OutlookVSTO/                 # VSTO COM Add-in (alternative solution)
+    └── README.md                # VSTO documentation
 ```
-
-## Dokumentation
-
-### For udviklere
-
-- **docs/QUICKSTART.md** - Kom hurtigt i gang med lokal udvikling
-- **docs/DEPLOYMENT.md** - Komplet deployment guide
-- **docs/AZURE-DEPLOYMENT.md** - Azure Static Web Apps deployment
-- **docs/HURTIG-AZURE-GUIDE.md** - Hurtig Azure guide
-- **docs/MANUAL-UPLOAD-GUIDE.md** - Manuel upload til Azure
-- **docs/FIX-GUIDE.md** - Fejlfinding og problemer
-
-### For slutbrugere
-
-- **docs/BRUGER-GUIDE.md** - Guide til slutbrugere (hvordan man bruger add-in)
-- **docs/PINNING-GUIDE.md** - Sådan pinner du add-in i Outlook
-
-### For IT administrators
-
-- **docs/INTUNE-POLICY-QUICK.md** - Deploy via Intune til alle brugere
-- **Enable-MeetingTemplateAddin.ps1** - PowerShell script til centraliseret deployment
 
 ## Deployment
 
-### Lokal test (Development)
+### Production Deployment
 
-For at teste lokalt:
+1. **Host the add-in**
+   - Deploy files to any HTTPS server (Azure Static Web Apps, GitHub Pages, AWS S3, etc.)
+   - Or use the `/deploy` folder for a clean deployment package
 
-```bash
-npm install
-node server.js
-```
+2. **Update manifest.xml**
+   - Replace all `https://YOUR-DOMAIN.com` with your actual domain
+   - Update `<ProviderName>` to your organization name
+   - Update `<DisplayName>` if desired
 
-Tilføj add-in manuelt i Outlook via **File → Get Add-ins → My Add-ins → Add from file**.
-
-### Azure Static Web Apps (Production)
-
-1. **Upload til Azure**
-   - Kopier filer fra `/deploy` mappen til Azure Static Web App
-   - Se `docs/AZURE-DEPLOYMENT.md` for fuld guide
-
-2. **Opdater manifest URLs**
-   - Manifest i `/deploy` er allerede konfigureret til Azure
-   - Skift URL hvis du bruger en anden hosting provider
-
-3. **Deploy til brugere**
+3. **Deploy to users**
    - Via Microsoft 365 Admin Center: **Settings → Integrated apps → Upload custom app**
-   - Via Intune: Se `docs/INTUNE-POLICY-QUICK.md`
+   - Via Intune: See `docs/INTUNE-POLICY-QUICK.md`
 
-### Enterprise deployment
+### Deployment Guides
 
-For at deploye til 400+ brugere:
+- **docs/DEPLOYMENT.md** - Complete deployment guide
+- **docs/AZURE-DEPLOYMENT.md** - Azure Static Web Apps specific guide
+- **docs/INTUNE-POLICY-QUICK.md** - Deploy via Intune to all users
 
-1. **Host add-in på Azure** (se docs/AZURE-DEPLOYMENT.md)
-2. **Centraliseret deployment via:**
-   - **Microsoft 365 Admin Center** (anbefalet)
-   - **Intune Policy** (for device management)
-   - **PowerShell script** (Enable-MeetingTemplateAddin.ps1)
+## Customize the Template
 
-Se detaljeret guide i `/OutlookVSTO/ENTERPRISE-DEPLOYMENT.md`
-
-## Tilpas skabelonen
-
-Skabelonen kan tilpasses i `commands.js`:
+The template can be customized in `commands.js`:
 
 ```javascript
 const MEETING_TEMPLATE = `
-<p><strong>🎯 Formål med mødet</strong></p>
-<p>Hvorfor mødes vi?</p>
+<div style="font-family: 'Neue Haas Grotesk', Arial, sans-serif;">
+<p><strong>Meeting Purpose</strong></p>
+<p>Brief description of why we're meeting and what we want to achieve.</p>
 <br>
 
-<p><strong>📋 Dagsorden/emner</strong></p>
-<ul>
-  <li>Emne 1</li>
-  <li>Emne 2</li>
-  <li>Emne 3</li>
-</ul>
+<p><strong>Agenda Items</strong></p>
+<p>List of topics to discuss (e.g., status updates or decisions)</p>
 <br>
 
-<p><strong>👥 Roller og ansvar</strong></p>
-<ul>
-  <li>Ordstyrer: </li>
-  <li>Referent: </li>
-  <li>Tidsansvarlig: </li>
-</ul>
+<p><strong>Roles and Responsibilities</strong></p>
+<p>Who is the meeting leader and who takes notes (if relevant).</p>
 <br>
 
-<p><strong>✅ Beslutninger og næste skridt</strong></p>
-<ul>
-  <li>Beslutning 1: </li>
-  <li>Handling 1: </li>
-</ul>
+<p><strong>Decisions and Next Steps</strong></p>
+<p>Conclude by summarizing decisions and agreeing on follow-up.</p>
 <br>
 
-<p><strong>💬 Evt.</strong></p>
-<p></p>
+<p><strong>Other Business</strong></p>
+<p>Time for questions or other items.</p>
+</div>
 `;
 ```
 
-**Efter ændringer:**
-1. Gem filen
-2. Push til GitHub (hvis du bruger GitHub Actions deployment)
-3. Eller upload manuelt til Azure
+**After changes:**
+1. Save the file
+2. Restart local server (for testing)
+3. Deploy updated files to production
 
-## Tekniske detaljer
+## Technical Details
 
 ### Office.js API
 
-Add-in bruger følgende Office.js APIs:
+The add-in uses the following Office.js APIs:
 - **LaunchEvent API** - Event-based activation (OnNewAppointmentOrganizer)
-- **Mailbox API** - Læs/skriv til møde body
-- **Body API** - HTML formatering af body content
+- **Mailbox API** - Read/write to meeting body
+- **Body API** - HTML formatting of body content
 
-### Browser kompatibilitet
+### Browser Compatibility
 
 - Edge (Chromium)
 - Chrome
 - Safari (Mac)
 - IE11 (legacy support via polyfills)
 
-### Office versioner
+### Office Versions
 
 - Microsoft 365 (Current Channel)
 - Office 2021
 - Office 2019
-- Office 2016 (med opdateringer)
+- Office 2016 (with updates)
 
-## Fejlfinding
+## Troubleshooting
 
-### Add-in vises ikke i Outlook
+### Add-in doesn't appear in Outlook
 
-1. Check at serveren kører (for lokal test)
-2. Tjek at manifest.xml er korrekt installeret
-3. Genstart Outlook
-4. Check Event Viewer for fejl
+1. Check that server is running (for local testing)
+2. Verify manifest.xml is correctly installed
+3. Restart Outlook
+4. Check Event Viewer for errors
 
-### Skabelonen indsættes ikke automatisk
+### Template doesn't insert automatically
 
-1. Åbn Developer Tools (F12) i mødevinduet
-2. Check Console for JavaScript fejl
-3. Verificer at LaunchEvent er registreret korrekt
+1. Open Developer Tools (F12) in meeting window
+2. Check Console for JavaScript errors
+3. Verify LaunchEvent is registered correctly
 
-### Får 404 fejl fra Azure
+See `docs/FIX-GUIDE.md` for more troubleshooting tips.
 
-1. Check at alle filer er uploaded til Azure
-2. Verificer staticwebapp.config.json indstillinger
-3. Check CORS settings i Azure
+## Security
 
-Se `docs/FIX-GUIDE.md` for flere fejlfinding tips.
+- Add-in uses HTTPS for production
+- No sensitive data is stored
+- Runs in sandboxed environment
+- Follows Microsoft security best practices
 
-## Sikkerhed
+## Contributing
 
-- Add-in bruger HTTPS for produktion
-- Ingen følsomme data gemmes
-- Kører i sandboxed environment
-- Følger Microsoft security best practices
+Contributions are welcome! To contribute:
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to branch
+5. Create a Pull Request
+
+## License
+
+MIT License - See LICENSE file for details
+
+## Version History
+
+- **v1.2.0** - Font customization (Neue Haas Grotesk with fallback)
+- **v1.1.0** - Event-based activation with LaunchEvent API
+- **v1.0.0** - Initial release with manual activation
 
 ## Support
 
-For spørgsmål eller problemer:
-1. Check dokumentation i `/docs` mappen
-2. Se fejlfinding guide: `docs/FIX-GUIDE.md`
-3. Opret et issue i GitHub repository
+For questions or issues:
+1. Check documentation in `/docs` folder
+2. See troubleshooting guide: `docs/FIX-GUIDE.md`
+3. Create an issue in the GitHub repository
 
-## Licens
+## Credits
 
-Dette projekt er udviklet til intern brug i organisationen.
+Developed as an open-source project to improve meeting culture and documentation across organizations.
 
-## Bidrag
+## Related Projects
 
-For at bidrage til projektet:
-1. Fork repository
-2. Opret feature branch
-3. Commit dine ændringer
-4. Push til branch
-5. Opret Pull Request
-
-## Version historik
-
-- **v1.1.0** - Event-based activation med LaunchEvent API
-- **v1.0.0** - Initial release med manuel activation
-
-## Kontakt
-
-For support kontakt IT-afdelingen
+If you're interested in this project, you might also like:
+- [Office Add-ins Samples](https://github.com/OfficeDev/Office-Add-in-samples)
+- [Outlook Add-in Documentation](https://docs.microsoft.com/en-us/office/dev/add-ins/outlook/)
