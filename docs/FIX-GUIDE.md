@@ -63,7 +63,7 @@ cp commands-FIXED.js commands.js
 
 **ELLER manuelt:**
 1. Gå til https://portal.azure.com
-2. Find din Static Web App: `icy-hill-0716f1a03`
+2. Find din Static Web App: `nice-beach-04e97be03`
 3. Upload opdaterede `commands.js`
 4. Opdater manifest.xml i din deployment
 

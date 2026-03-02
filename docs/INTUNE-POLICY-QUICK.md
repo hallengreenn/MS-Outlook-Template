@@ -67,7 +67,7 @@ d6ff5248-95b4-4400-8f5d-4ce60c4ed0be
 
 **Manifest URL (hvis der er et felt til det):**
 ```
-https://icy-hill-0716f1a03.1.azurestaticapps.net/manifest.xml
+https://nice-beach-04e97be03.1.azurestaticapps.net/manifest.xml
 ```
 
 4. Klik **OK**
@@ -193,7 +193,7 @@ For at teste på EN maskine før rollout:
 $regPath = "HKCU:\Software\Microsoft\Office\Outlook\Addins\d6ff5248-95b4-4400-8f5d-4ce60c4ed0be"
 New-Item -Path $regPath -Force
 Set-ItemProperty -Path $regPath -Name "LoadBehavior" -Value 3 -Type DWord
-Set-ItemProperty -Path $regPath -Name "Manifest" -Value "https://icy-hill-0716f1a03.1.azurestaticapps.net/manifest.xml"
+Set-ItemProperty -Path $regPath -Name "Manifest" -Value "https://nice-beach-04e97be03.1.azurestaticapps.net/manifest.xml"
 Set-ItemProperty -Path $regPath -Name "Description" -Value "Meeting Template"
 Set-ItemProperty -Path $regPath -Name "FriendlyName" -Value "Meeting Template"
 

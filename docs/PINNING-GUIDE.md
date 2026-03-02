@@ -56,7 +56,7 @@ d6ff5248-95b4-4400-8f5d-4ce60c4ed0be
 
 **Value:**
 ```
-3;https://icy-hill-0716f1a03.1.azurestaticapps.net/manifest.xml
+3;https://nice-beach-04e97be03.1.azurestaticapps.net/manifest.xml
 ```
 
 **Forklaring af value:**
@@ -87,7 +87,7 @@ d6ff5248-95b4-4400-8f5d-4ce60c4ed0be
 
 5. **Enable** og tilføj:
    ```
-   d6ff5248-95b4-4400-8f5d-4ce60c4ed0be=3;https://icy-hill-0716f1a03.1.azurestaticapps.net/manifest.xml
+   d6ff5248-95b4-4400-8f5d-4ce60c4ed0be=3;https://nice-beach-04e97be03.1.azurestaticapps.net/manifest.xml
    ```
 
 6. **gpupdate /force** på klient maskiner
@@ -108,7 +108,7 @@ HKEY_CURRENT_USER\Software\Microsoft\Office\Outlook\Addins\d6ff5248-95b4-4400-8f
 "Description" = "Meeting Template"
 "FriendlyName" = "Meeting Template"
 "LoadBehavior" = dword:00000003
-"Manifest" = "https://icy-hill-0716f1a03.1.azurestaticapps.net/manifest.xml"
+"Manifest" = "https://nice-beach-04e97be03.1.azurestaticapps.net/manifest.xml"
 ```
 
 **ELLER via PowerShell:**
@@ -120,7 +120,7 @@ New-Item -Path $regPath -Force
 Set-ItemProperty -Path $regPath -Name "Description" -Value "Meeting Template"
 Set-ItemProperty -Path $regPath -Name "FriendlyName" -Value "Meeting Template"
 Set-ItemProperty -Path $regPath -Name "LoadBehavior" -Value 3
-Set-ItemProperty -Path $regPath -Name "Manifest" -Value "https://icy-hill-0716f1a03.1.azurestaticapps.net/manifest.xml"
+Set-ItemProperty -Path $regPath -Name "Manifest" -Value "https://nice-beach-04e97be03.1.azurestaticapps.net/manifest.xml"
 ```
 
 **LoadBehavior værdier:**
