@@ -88,13 +88,10 @@ outlook-meeting-template/
 │   ├── staticwebapp.config.json
 │   └── assets/                  # Icons
 │
-├── docs/                        # Documentation
-│   ├── QUICKSTART.md            # Quick start guide
-│   ├── DEPLOYMENT.md            # Full deployment guide
-│   └── ...
-│
-└── OutlookVSTO/                 # VSTO COM Add-in (alternative solution)
-    └── README.md                # VSTO documentation
+└── docs/                        # Documentation
+    ├── QUICKSTART.md            # Quick start guide
+    ├── DEPLOYMENT.md            # Full deployment guide
+    └── ...
 ```
 
 ## Deployment
