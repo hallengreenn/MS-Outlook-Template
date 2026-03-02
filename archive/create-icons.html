@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Create Icons</title></head>
+<body>
+<canvas id="c16" width="16" height="16"></canvas>
+<canvas id="c32" width="32" height="32"></canvas>
+<canvas id="c64" width="64" height="64"></canvas>
+<canvas id="c80" width="80" height="80"></canvas>
+<canvas id="c128" width="128" height="128"></canvas>
+<script>
+['16','32','64','80','128'].forEach(size => {
+  const canvas = document.getElementById('c'+size);
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#0078d4';
+  ctx.fillRect(0, 0, size, size);
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold ' + (size/2) + 'px Arial';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('M', size/2, size/2);
+  console.log(size + ': ' + canvas.toDataURL('image/png'));
+});
+</script>
+</body>
+</html>

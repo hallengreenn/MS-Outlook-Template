@@ -3,8 +3,9 @@
  * FIXED: Bruger OnNewAppointmentOrganizer event
  */
 
-// Møde skabelon i HTML format
+// Møde skabelon i HTML format med Neue Hass Grotesk font
 const MEETING_TEMPLATE = `
+<div style="font-family: 'Neue Haas Grotesk', Arial, sans-serif;">
 <p><strong>Formål med mødet</strong></p>
 <p>Kort beskrivelse af, hvorfor vi mødes, og hvad vi skal opnå.</p>
 <br>
@@ -23,6 +24,7 @@ const MEETING_TEMPLATE = `
 
 <p><strong>Evt.</strong></p>
 <p>Tid til spørgsmål eller andre punkter.</p>
+</div>
 `;
 
 // Initialize Office.js
