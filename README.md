@@ -39,6 +39,7 @@ To deploy this add-in, you need:
 
 1. **Deploy to Azure Static Web Apps**
    - Follow the detailed guide: **AZURE-DEPLOYMENT.md** ⭐
+   - Upload all files from root directory to Azure
    - Or use GitHub Pages, Netlify, etc.
 
 2. **Update manifest.xml**
@@ -88,27 +89,12 @@ outlook-meeting-template/
 ├── server.js                    # Local development server
 ├── package.json                 # NPM dependencies
 │
-├── assets/                      # Icons (PNG format)
-│   ├── icon-16.png
-│   ├── icon-32.png
-│   ├── icon-64.png
-│   ├── icon-80.png
-│   └── icon-128.png
-│
-├── deploy/                      # Ready for production deployment
-│   ├── manifest.xml             # Manifest with YOUR-DOMAIN.com placeholders
-│   ├── index.html
-│   ├── commands.html
-│   ├── commands.js
-│   ├── taskpane.html
-│   ├── taskpane.js
-│   ├── staticwebapp.config.json
-│   └── assets/                  # Icons
-│
-└── docs/                        # Documentation
-    ├── QUICKSTART.md            # Quick start guide
-    ├── DEPLOYMENT.md            # Full deployment guide
-    └── ...
+└── assets/                      # Icons (PNG format)
+    ├── icon-16.png
+    ├── icon-32.png
+    ├── icon-64.png
+    ├── icon-80.png
+    └── icon-128.png
 ```
 
 ## Deployment
@@ -116,8 +102,8 @@ outlook-meeting-template/
 ### Production Deployment
 
 1. **Host the add-in**
-   - Deploy files to any HTTPS server (Azure Static Web Apps, GitHub Pages, AWS S3, etc.)
-   - Or use the `/deploy` folder for a clean deployment package
+   - Deploy all files from root directory to any HTTPS server
+   - Azure Static Web Apps, GitHub Pages, Netlify, AWS S3, etc.
 
 2. **Update manifest.xml**
    - Replace all `https://YOUR-DOMAIN.com` with your actual domain
